@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { type Request, type Response, type NextFunction } from 'express';
 import { DB } from "../../components/pg_db.js";
 import moment from "moment";
 
@@ -24,14 +24,12 @@ interface ApiResponse {
 
 export default class AdminController {
 
-    // Получение списка пользователей
     async users(req: Request, res: Response, next: NextFunction): Promise<Response> {
         try {
             const page = Math.max(parseInt(req.query.page as string) || 1, 1);
             const perPage = Math.min(parseInt(req.query.perPage as string) || 10, 100);
             const offset = (page - 1) * perPage;
 
-            // Используем параметры $1, $2 для безопасности
             const q = {
                 text: `SELECT * FROM users ORDER BY id LIMIT $1 OFFSET $2;`,
                 values: [perPage, offset]
@@ -51,7 +49,6 @@ export default class AdminController {
         }
     }
 
-    // Список промокодов
     async list(req: Request, res: Response, next: NextFunction): Promise<Response> {
         try {
             const page = Math.max(parseInt(req.query.page as string) || 1, 1);
@@ -76,7 +73,6 @@ export default class AdminController {
         }
     }
 
-    // Создание промокода
     async createPromo(req: Request, res: Response, next: NextFunction): Promise<Response> {
         try {
             let { code, active, expiration_date, p_limit } = req.body;
@@ -96,7 +92,6 @@ export default class AdminController {
         }
     }
 
-    // Удаление промокода
     async deletePromo(req: Request, res: Response, next: NextFunction): Promise<Response> {
         try {
             const { promo_id } = req.params;
@@ -111,7 +106,6 @@ export default class AdminController {
         }
     }
 
-    // Привязка Email к промокоду
     async emailBind(req: Request, res: Response, next: NextFunction): Promise<Response> {
         try {
             const { email, promo_id } = req.body;
@@ -151,7 +145,6 @@ export default class AdminController {
         }
     }
 
-    // Отвязка Email
     async emailUncouple(req: Request, res: Response, next: NextFunction): Promise<Response> {
         try {
             const { email, promo_id } = req.body;

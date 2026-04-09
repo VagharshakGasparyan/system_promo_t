@@ -1,4 +1,4 @@
-import { Application, Request, Response, NextFunction } from 'express';
+import { type Application, type Request, type Response, type NextFunction } from 'express';
 import createError, { HttpError } from 'http-errors';
 
 export default (app: Application): void => {

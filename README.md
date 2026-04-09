@@ -1,4 +1,4 @@
-# system_promo
+# system_promo_t
 ```
 npm i
 ```
@@ -27,6 +27,6 @@ node com seed
 ```
 For the developer version type
 ``
-nodemon start
+npx tsx start.ts
 ``
 to starting server.
