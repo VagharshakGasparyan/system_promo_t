@@ -1,5 +1,5 @@
-const AllMigration = require('./migrations/migrateAll');
-const AllSeed = require('./seeders/seedAll');
+import AllMigration from './migrations/migrateAll.js';
+import AllSeed from './seeders/seedAll.js';
 
 const com_colours = {
     reset: "\x1b[0m",
@@ -35,8 +35,8 @@ const com_colours = {
     }
 };
 const help = [
-    {command: "node com migrate", description: "Migrate all."},
-    {command: "node com seed", description: "Seed all."}
+    {command: "npx tsx com.js migrate", description: "Migrate all."},
+    {command: "npx tsx com.js seed", description: "Seed all."}
 ];
 let comMaxLen = 0;
 help.forEach((h) => {
@@ -57,6 +57,8 @@ async function f() {
         await new AllMigration().up();
     }else if(args[0] === 'seed'){
         await new AllSeed().up();
+    }else if(args[0] === 'help'){
+        console.log(helpText);
     }else{
         console.log('There is no such command.');
     }

@@ -1,4 +1,4 @@
-const {DB} = require("../components/pg_db");
+import { DB } from "../components/pg_db.js";
 
 class AllSeed {
     constructor() {
@@ -19,7 +19,10 @@ class AllSeed {
                          ('Grisha', 'grisha@example.com'),
                          ('Yura', 'yura@example.com'),
                          ('John', 'john@example.com'),
-                         ('Alla', 'alla@example.com')
+                         ('Alla', 'alla@example.com'),
+                         ('Oliver', 'oliver@example.com'),
+                         ('George', 'george@example.com'),
+                         ('James', 'james@example.com')
                          ON CONFLICT (email) DO NOTHING;`;
             await DB(q);
 
@@ -32,4 +35,5 @@ class AllSeed {
     async down() {
 
     }
-}module.exports = AllSeed;
+}
+export default AllSeed;

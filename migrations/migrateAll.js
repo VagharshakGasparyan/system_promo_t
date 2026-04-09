@@ -1,4 +1,4 @@
-const {DB} = require("../components/pg_db");
+import { DB } from "../components/pg_db.js";
 
 class AllMigration {
     constructor() {
@@ -52,4 +52,6 @@ class AllMigration {
     async down() {
 
     }
-}module.exports = AllMigration;
+}
+
+export default AllMigration;

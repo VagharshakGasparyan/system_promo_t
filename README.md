@@ -15,15 +15,14 @@ npm i node-cron
 npm i moment
 npm i winston
 npm i pg
-npm i nodemon
 ```
 - Migrations
 ```
-node com migrate
+npx tsx com.js migrate
 ```
 - Seeders
 ```
-node com seed
+npx tsx com.js seed
 ```
 For the developer version type
 ``
